@@ -1,5 +1,9 @@
 #include "Triangleltem.h"
+
 Triangleltem::Triangleltem()
+    : m_id(0)
+    , m_userAns(-1)
+    , m_correctAns(0)
 {
     m_a = 3;
     m_b = 4;
