@@ -1,6 +1,6 @@
-#include "Triangleltem.h"
+#include "TriangleItem.h"
 
-Triangleltem::Triangleltem()
+TriangleItem::TriangleItem()
     : m_id(0)
     , m_userAns(-1)
     , m_correctAns(0)

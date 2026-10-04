@@ -1,9 +1,9 @@
 #pragma once
-class Triangleltem
+class TriangleItem
 {
 public:
-    Triangleltem();
-    Triangleltem(int a, int b, int c);
+    TriangleItem();
+    TriangleItem(int a, int b, int c);
     void setTriangle(int a, int b, int c);
     void printTriangle();
     bool isTriangle();

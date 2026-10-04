@@ -1,5 +1,5 @@
 #pragma once
-#include "Triangleltem.h"
+#include "TriangleItem.h"
 class QuestionBank
 {
 private:
@@ -11,7 +11,7 @@ private:
     int m_questionNumbers[100];
     int m_questionScores[100];
     int m_totalScore;
-    Triangleltem m_triangleItems[100];
+    TriangleItem m_triangleItems[100];
 public:
     QuestionBank();
     void setBankName(const char* name);
