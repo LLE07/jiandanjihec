@@ -1,20 +1,30 @@
-﻿// jiandanjihec.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//
-
-#include <iostream>
-
+﻿#include <iostream>
+#include "QuestionBank.h"
+using namespace std;
 int main()
 {
-    std::cout << "Hello World!\n";
+	QuestionBank bank;
+	bank.setBankName("三角形几何练习题库");
+	cout << "题库名称: " << bank.getBankName() << endl << endl;
+	bank.addQuestion(1, 3, 4, 5);
+	bank.addQuestion(2, 5, 12, 13);
+	bank.addQuestion(3, 8, 15, 17);
+	cout << "========题库初始状态========" << endl;
+	cout << "题目总数: " << bank.getQuestionCount() << endl;
+	bank.showAllQuestions();
+	cout << endl;
+	bank.answerQuestion(1, 6); 
+	bank.answerQuestion(2, 30); 
+	bank.answerQuestion(3, 60);
+	cout << endl;
+	cout << "========题库答题后状态========" << endl;
+	cout << "题库满分为: " << bank.getTotalScore() << endl;
+	cout << "用户实际得分为: " << bank.getCorrectCount() * 10 << endl;
+	cout << "正确率为: " << (double)bank.getCorrectCount() / bank.getQuestionCount() * 100 << "%" << endl;
+	cout << endl;
+	cout << "========重置答题记录========" << endl;
+	bank.setCorrectCount(0);
+	cout << "重置后用户得分为: " << bank.getCorrectCount() * 10 << endl;
+	cout << "重置后答对题数为: " << bank.getCorrectCount() << endl;
+	return 0;
 }
-
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
-
-// 入门使用技巧: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
