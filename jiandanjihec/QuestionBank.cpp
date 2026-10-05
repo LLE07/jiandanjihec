@@ -4,7 +4,7 @@
 using namespace std;
 QuestionBank::QuestionBank()
 {
-	strcpy(m_bankName, "Default Bank");
+	strcpy_s(m_bankName, 50, "Default Bank");   // 50 与数组大小一致
 	m_averageScore = 0.0;
 	m_questionCount = 0;
 	m_correctCount = 0;
@@ -18,7 +18,7 @@ QuestionBank::QuestionBank()
 }
 void QuestionBank::setBankName(const char* name)
 {
-	strcpy(m_bankName, name);
+	strcpy_s(m_bankName, 50, name);
 }
 const char* QuestionBank::getBankName() const
 {
@@ -92,6 +92,7 @@ bool QuestionBank::addQuestion(int id, int a, int b, int c)
 		return false;
 	m_triangleItems[m_questionCount].setTriangle(a, b, c);
 	m_triangleItems[m_questionCount].setId(id);
+	m_triangleItems[m_questionCount].setScore(10);   // 同步题目对象分值（否则 getScore() 恒为0）
 	m_questionNumbers[m_questionCount] = id;
 	m_questionScores[m_questionCount] = 10;
 	++m_questionCount;
@@ -130,7 +131,7 @@ void QuestionBank::queryQuestion(int id) const
 			return;
 		}
 	}
-	cout << "题目编号 " << id << " 不存在。" << endl;
+	cout << "题目编号" << id << "不存在。" << endl;
 }
 void QuestionBank::showAllQuestions() const
 {
@@ -140,8 +141,7 @@ void QuestionBank::showAllQuestions() const
 	cout << "总得分: " << m_totalScore << endl;
 	for (int i = 0; i < m_questionCount; ++i)
 	{
-		cout << "题目编号: " << m_triangleItems[i].getId() << endl;
-		m_triangleItems[i].printTriangle();
+		m_triangleItems[i].printTriangle();   // printTriangle 已含题目编号，不再重复打印
 	}
 }
 void QuestionBank::answerQuestion(int id, int userAns)
@@ -154,19 +154,19 @@ void QuestionBank::answerQuestion(int id, int userAns)
 			if (userAns == m_triangleItems[i].getCorrectAns())
 			{
 				++m_correctCount;
-				cout << "题目编号 " << id << " 回答正确，得分为 " << m_questionScores[i] << " 分。" << endl;
+				cout << "题目编号" << id << "回答正确，得分为" << m_questionScores[i] << " 分。" << endl;
 			}
 			else
 			{
 				++m_incorrectCount;
-				cout << "题目编号 " << id << " 回答错误，正确答案为 " << m_triangleItems[i].getCorrectAns() << "，得分为 0 分。" << endl;
+				cout << "题目编号" << id << " 回答错误，正确答案为" << m_triangleItems[i].getCorrectAns() << "，得分为 0 分。" << endl;
 			}
 			calculateAverageScore();
 			calculateTotalScore();
 			return;
 		}
 	}
-	cout << "题目编号 " << id << " 不存在。" << endl;
+	cout << "题目编号" << id << "不存在。" << endl;
 }
 void QuestionBank::calculateAverageScore()
 {
@@ -190,4 +190,4 @@ void QuestionBank::calculateTotalScore()
 		totalScore += m_triangleItems[i].getScore();
 	}
 	m_totalScore = totalScore;
-}	
+}

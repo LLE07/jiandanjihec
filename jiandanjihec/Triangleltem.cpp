@@ -18,12 +18,12 @@ TriangleItem::TriangleItem(int a, int b, int c)
 	m_a = a;
 	m_b = b;
 	m_c = c;
-	calPerimeter();
-	calArea();
+	m_perimeter = calPerimeter();   // 保存周长
+	m_area = calArea();             // 保存面积
+	m_correctAns = (int)m_area;     // 正确答案 = 面积
 	m_score = 0;
 	m_userAns = 0;
 	m_id = 0;
-	m_correctAns = 0;
 	m_uarea = 0.0;
 	m_uperimeter = 0;
 }
@@ -32,8 +32,9 @@ void TriangleItem::setTriangle(int a, int b, int c)
 	m_a = a;
 	m_b = b;
 	m_c = c;
-	calPerimeter();
-	calArea();
+	m_perimeter = calPerimeter();   // 保存周长（原来返回值被丢弃，恒为0）
+	m_area = calArea();             // 保存面积（原来恒为0）
+	m_correctAns = (int)m_area;     // 正确答案 = 面积（与答题语义一致）
 }
 void TriangleItem::printTriangle() const
 {
@@ -81,8 +82,9 @@ void TriangleItem::flow()
 {
 	cout << "请输入三角形的三边长: ";
 	cin >> m_a >> m_b >> m_c;
-	calPerimeter();
-	calArea();
+	m_perimeter = calPerimeter();
+	m_area = calArea();
+	m_correctAns = (int)m_area;
 	cout << "周长为: " << m_perimeter << endl;
 	cout << "面积为: " << m_area << endl;
 }

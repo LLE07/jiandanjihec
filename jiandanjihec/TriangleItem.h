@@ -16,6 +16,7 @@ public:
     inline double getPerimeter() { return m_perimeter; }
     inline double getUPerimeter() { return m_uperimeter; }
     inline int getScore() { return m_score; }
+    inline void setScore(int score) { m_score = score; }
     inline int getA() { return m_a; }
     inline int getB() { return m_b; }
     inline int getC() { return m_c; }

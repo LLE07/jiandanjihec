@@ -1,8 +1,10 @@
-﻿#include <iostream>
+#include <iostream>
+#include <windows.h>
 #include "QuestionBank.h"
 using namespace std;
 int main()
 {
+		SetConsoleOutputCP(65001);   // 控制台输出代码页改为 UTF-8，解决中文乱码
 	QuestionBank bank;
 	bank.setBankName("三角形几何练习题库");
 	cout << "题库名称: " << bank.getBankName() << endl << endl;
