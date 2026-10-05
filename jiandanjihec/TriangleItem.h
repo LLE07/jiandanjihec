@@ -5,11 +5,11 @@ public:
     TriangleItem();
     TriangleItem(int a, int b, int c);
     void setTriangle(int a, int b, int c);
-    void printTriangle();
-    bool isTriangle();
-    int calPerimeter();
-    double calArea();
-    bool isRightTriangle();
+    void printTriangle() const;
+    bool isTriangle() const;
+    int calPerimeter() const;
+    double calArea() const;
+    bool isRightTriangle() const;
     void flow();
     inline double getArea() { return m_area; }
     inline double getUArea() { return m_uarea; }
